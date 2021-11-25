@@ -6,6 +6,7 @@ const express = require('express');
 
 // 创建app框架服务
 let app = express();
+app.dispatch('x-powered-by');
 
 // 设置路由服务
 app.get('/', (request, response) => {
