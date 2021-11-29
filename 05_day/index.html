@@ -8,9 +8,9 @@
   <title>Document</title>
 </head>
 <style>
-  /* body {
+  body {
     height: 2000px;
-  } */
+  }
 </style>
 
 <body>
@@ -24,17 +24,29 @@
 
   <script>
     // 防抖
-    function debounce(fn, delay) {
-      let timer = null;
-      return function (...args) {
-        if (timer) {
-          clearTimeout(timer);
-        }
+    // function debounce(fn, delay) {
+    //   let timer = null;
+    //   return function (...args) {
+    //     if (timer) {
+    //       clearTimeout(timer);
+    //     }
 
-        timer = setTimeout(() => {
+    //     timer = setTimeout(() => {
+    //       fn.apply(this, args);
+    //       console.log(args)
+    //     }, delay);
+    //   }
+    // }
+
+    // 节流
+    function throttle(fn, dalay) {
+      let last = 0;
+      return (...args) => {
+        let now = Date.now();
+        if (now - last > dalay) {
+          last = now;
           fn.apply(this, args);
-          console.log(args)
-        }, delay);
+        }
       }
     }
 
